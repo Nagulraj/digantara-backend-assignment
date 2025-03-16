@@ -17,14 +17,13 @@ formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(messag
 file_handler.setFormatter(formatter)
 file_handler.setLevel(logging.INFO)
 
-# Add handlers to Flask logger
 app.logger.addHandler(file_handler)
 app.logger.setLevel(logging.INFO)
 
-# Ensure we don't use the default Flask logging handlers
+
 app.logger.propagate = False
 
-# Create a separate log file for transactions
+
 def log_transaction(algorithm, request_data, response_data, execution_time=None):
     """
     Logs transaction details to a text file
